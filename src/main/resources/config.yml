@@ -62,6 +62,15 @@ ignoreMobXPDrops: false
 #Plase does not have permission
 msgNoperms: "&cYou don't have permission to use this command"
 
+#ItemsAdder crops give their loot without breaking a block, so AutoPickup cannot see it as a block drop.
+#With this on, an ItemsAdder item that appears within <radius> blocks of a player who clicked, swung their arm or broke a block
+#in the last <clickWindowMillis> milliseconds goes into their inventory (needs AutoPickup enabled for the player).
+#Only used when ItemsAdder is installed.
+itemsAdderCropDrops:
+  enabled: true
+  radius: 6
+  clickWindowMillis: 250
+
 #Require Permissions | Do players require permission to run commands?
 requirePerms:
   autopickup: true

@@ -150,6 +150,11 @@ public final class AutoPickup extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new ItemSpawnEventListener(), this);
         getServer().getPluginManager().registerEvents(new EntityDropItemEventListener(), this);
 
+        // ItemsAdder crops (their loot is not a block drop)
+        if (getServer().getPluginManager().getPlugin("ItemsAdder") != null) {
+            getServer().getPluginManager().registerEvents(new ItemsAdderCropListener(), this);
+        }
+
 
         if (usingMythicMobs) {
             getServer().getPluginManager().registerEvents(new MythicMobListener(), this);

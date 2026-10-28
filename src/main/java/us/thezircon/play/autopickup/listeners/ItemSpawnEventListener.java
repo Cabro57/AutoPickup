@@ -10,6 +10,7 @@ import org.bukkit.event.entity.ItemSpawnEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.metadata.FixedMetadataValue;
 import us.thezircon.play.autopickup.AutoPickup;
+import us.thezircon.play.autopickup.utils.AutoSmeltUtils;
 import us.thezircon.play.autopickup.utils.PickupObjective;
 
 import java.util.HashMap;
@@ -61,6 +62,9 @@ public class ItemSpawnEventListener implements Listener {
             ItemStack item = e.getEntity().getItemStack();
             Player player = po.getPlayer();
             boolean doSmelt = PLUGIN.auto_smelt_blocks.contains(player);
+            if (doSmelt) {
+                item = AutoSmeltUtils.smelt(item, player);
+            }
             HashMap<Integer, ItemStack> leftOver = player.getInventory().addItem(item);
             if (leftOver.keySet().size()<=0) {
                 e.getEntity().remove();
